@@ -5,26 +5,26 @@
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.1.1/samples
  */
 
-apply plugin: 'java'
-
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
-        classpath 'io.cucumber:cucumber-java:6.10.4'
-        classpath 'io.cucumber:cucumber-junit:6.10.4'
-        classpath 'org.hamcrest:hamcrest:2.2'
-    }
+plugins {
+    id 'java'
 }
 
-allprojects {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
 }
+
+
+dependencies {
+    implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
+    implementation('io.cucumber:cucumber-java:6.10.4')
+    testImplementation('io.cucumber:cucumber-junit:6.10.4')
+    testImplementation('org.hamcrest:hamcrest:2.2')
+    testImplementation("io.github.bonigarcia:webdrivermanager:4.4.3")
+
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver/chromedriver.exe")
+}
+
+
 
 
 
